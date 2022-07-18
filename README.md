@@ -178,6 +178,22 @@ peer: dfJjw5rdVNhmcIlDyFAXZI0rBQydsw9uqlh4kFJxBa0I=
   transfer: 30.63 MiB received, 6.55 MiB sent
 ```
 
+
+For the client i strongly ... STRONGLY suggest to import a configuration 
+
+```$ cat wireconf.conf```
+```
+[Interface]
+Address = 172.16.18.10/32
+PrivateKey = <me_privatekey>
+DNS = 1.1.1.1
+
+[Peer]
+PublicKey = <server_publickey_me>
+AllowedIPs = 0.0.0.0/0, ::/0
+Endpoint = <your-public-ip>:31820
+```
+
 <br/><br/>
 
 
@@ -194,7 +210,7 @@ And what about the resources usage with 1g file download...
 <br/><br/>
 
 So i'm really impressed by the efficency of this tool ... i was reading a lot of good mention about it,  
-however today i discovered another knife for my swiss army )
+however today i discovered another knife for my swiss army 
 
 
 
