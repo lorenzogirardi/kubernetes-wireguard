@@ -163,7 +163,7 @@ wireguard-74ff66988d-ltwkq   1/1     Running   0          108m
 ```    
 and  
 
-```root@instance-20220215-1853:~/wireguard# kubectl exec -n wireguard -it deployment/wireguard -- bash```   
+```# kubectl exec -n wireguard -it deployment/wireguard -- bash```   
 ```
 root@wireguard-74ff66988d-ltwkq:/# wg show
 interface: wg0
@@ -210,7 +210,7 @@ And what about the resources usage with 1g file download...
 <br/><br/>
 
 So i'm really impressed by the efficency of this tool ... i was reading a lot of good mention about it,  
-however today i discovered another knife for my swiss army 
+however today i discovered another tool for my swiss army knife
 
 
 
