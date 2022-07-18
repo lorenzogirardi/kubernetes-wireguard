@@ -39,7 +39,7 @@ wg genkey | tee me_privatekey | wg pubkey > me_publickey
 
 <br/><br/>
 
-## Key generation <a name="kubeconf"></a>  
+## Kubernetes deployment <a name="kubeconf"></a>  
 
 Let's create a dedicated namespace , i'm not a fan of default  
 ```
@@ -156,12 +156,45 @@ spec:
 ```
 
 if everithing is done correctly you will se the following  
-```kubectl get pods -n wireguard```  
-```NAME                         READY   STATUS    RESTARTS   AGE```  
-```wireguard-74ff66988d-ltwkq   1/1     Running   0          108m```
+```kubectl get pods -n wireguard```    
+```
+NAME                         READY   STATUS    RESTARTS   AGE
+wireguard-74ff66988d-ltwkq   1/1     Running   0          108m
+```    
+and  
+
+```root@instance-20220215-1853:~/wireguard# kubectl exec -n wireguard -it deployment/wireguard -- bash```   
+```
+root@wireguard-74ff66988d-ltwkq:/# wg show
+interface: wg0
+  public key: Er7V4vxMEVBNZbqbDzHgXlYnZjSwrJYtwds86oOLLEg=
+  private key: (hidden)
+  listening port: 51820
+
+peer: dfJjw5rdVNhmcIlDyFAXZI0rBQydsw9uqlh4kFJxBa0I=
+  endpoint: 10.0.254.135:33851
+  allowed ips: 172.16.18.10/32
+  latest handshake: 5 minutes, 16 seconds ago
+  transfer: 30.63 MiB received, 6.55 MiB sent
+```
+
+<br/><br/>
+
+
+## Test and results <a name="results"></a>
+
+From mobile  
+[![wirecardmobile](https://res.cloudinary.com/ethzero/image/upload/c_scale,w_240/v1658175857/misc/wirecardmobile.png)](https://res.cloudinary.com/ethzero/video/upload/v1658175554/misc/wireguard-mobile.mp4 "wirecardmobile")   
+
+And what about the resources usage with 1g file download...   
+![](https://res.cloudinary.com/ethzero/image/upload/v1658176773/misc/wireguardesktop.png)
 
 
 
+<br/><br/>
+
+So i'm really impressed by the efficency of this tool ... i was reading a lot of good mention about it,  
+however today i discovered another knife for my swiss army )
 
 
 
