@@ -214,4 +214,38 @@ however today i discovered another tool for my swiss army knife
 
 
 
+<br/><br/>
+
+### UPDATE   
+Added a monitoring service as a sidecar container based on prometheus exporter https://github.com/MindFlavor/prometheus_wireguard_exporter   
+
+
+```
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "9586"
+```
+
+this annotation is based of kubernetes service discovery in prometheus server   
+
+```
+        - name: "wg-exporter"
+          image: "mindflavor/prometheus-wireguard-exporter:3.6.3"
+          args: ["--prepend_sudo=true"]
+          ports:
+            - containerPort: 9586
+          securityContext:
+            privileged: true
+            capabilities:
+              add:
+                - NET_ADMIN
+                - NET_BIND_SERVICE
+```   
+
+Grafana
+
+![](https://res.cloudinary.com/ethzero/image/upload/v1658901252/misc/grafana-wireguard.png)
+
+
 
