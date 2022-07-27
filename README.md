@@ -243,6 +243,8 @@ this annotation is based of kubernetes service discovery in prometheus server
                 - NET_BIND_SERVICE
 ```   
 
+configuration file available in monitoring branch https://github.com/lorenzogirardi/kubernetes-wireguard/blob/monitoring/deploy/wireguard-dpl.yaml   
+
 Grafana
 
 ![](https://res.cloudinary.com/ethzero/image/upload/v1658901252/misc/grafana-wireguard.png)
