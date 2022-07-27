@@ -11,6 +11,10 @@ spec:
     metadata:
       labels:
         name: wireguard
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "9586"
     spec:
       initContainers:
         - name: "wireguard-template-replacement"
@@ -40,6 +44,17 @@ spec:
             capabilities:
               add:
                 - NET_ADMIN
+        - name: "wg-exporter"
+          image: "mindflavor/prometheus-wireguard-exporter:3.6.3"
+          args: ["--prepend_sudo=true"]
+          ports:
+            - containerPort: 9586
+          securityContext:
+            privileged: true
+            capabilities:
+              add:
+                - NET_ADMIN
+                - NET_BIND_SERVICE
       volumes:
         - name: wireguard-config
           emptyDir: {}
